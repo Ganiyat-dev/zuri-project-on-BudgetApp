@@ -1,9 +1,10 @@
 class Budget:
-    def __init__(self, bCategory=["food","clothing","entertainment"], balance=[0,0,0]):
+    def __init__(self, bCategory=["food","clothing","entertainment"], balance=[40000, 25000, 10000]):
         #balance at index 0 = foodBalance, index 1 = clothing and index 2 = entertainment
         self.balance = balance
         self.bCategory = bCategory
         print ("These are the available categories: \n 1. Food \n 2. clothing \n 3. Entertainment")
+    
     def deposit(self):
         selectedCategory = int(input("Please enter the Category option to continue \n"))
         if selectedCategory not in [1,2,3]:
@@ -26,34 +27,33 @@ class Budget:
 
 #withdraw money from each category respectively
     def withdraw(self):
-         selectedCategory = int(input("Please Select an option to continue: \n"))
-         if selectedCategory not in [1,2,3]:
-            print("You must enter option 1, 2 or 3 to continue")
-            selectedCategory = int(input("Please enter the Category option to continue: \n"))
-         if selectedCategory == 1:
+        category = int(input("Please enter the Category option to continue: \n"))
+        if category not in [1,2,3]:
+            print("You must enter 1, 2 or 3 to continue")
+            category = int(input("Select a category option to continue: \n"))
+        if category == 1:
             amount = int(input("Enter amount to withdraw: \n"))
             if self.balance[0] < amount:
-                print("Insufficient Balance")
-            else:
+                print("Insufficient balance")
+            else: 
                 self.balance[0] = self.balance[0] - amount
-            print("You have successfully withdrawed from your %s category." % (self.bCategory[0]))
-         
-         elif selectedCategory == 2:
+                print("Withdrawal successful, your balance remain: ", self.balance[0])
+        elif category == 2:
             amount = int(input("Enter amount to withdraw: \n"))
             if self.balance[1] < amount:
-                print("Insufficient Balance")
-            else:
+                print("Insufficient balance")
+            else: 
                 self.balance[1] = self.balance[1] - amount
-            print("You have successfully withdrawed from your %s category." % (self.bCategory[1]))
-         elif selectedCategory == 3:
+                print("Withdrawal successful, your balance remain: ", self.balance[1])
+        elif category == 3:
             amount = int(input("Enter amount to withdraw: \n"))
             if self.balance[2] < amount:
-                print("Insufficient Balance")
-            else:
+                print("Insufficient balance")
+            else: 
                 self.balance[2] = self.balance[2] - amount
-            print("You have successfully withdrawed from your %s category." % (self.bCategory[2]))
-         else:
-            print("You have selected an Invalid category option")
+                print("Withdrawal successful, your balance remain: ", self.balance[2])
+        else:
+            print("Category option could not be found")
         
     def check_balance(self):
         selectedCategory = int(input("Please enter the Category option to continue: \n"))
